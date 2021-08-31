@@ -7,14 +7,36 @@ QUnit.module('Тестируем функцию anagram', function () {
 			'стоп', 'ток', 'кошка',
 			'липа', 'коробка', 'пост'
 		];
-
 		const output = [
 			[ 'барокко', 'коробка' ],
 			[ 'кот', 'ток' ],
 			[ 'липа', 'пила' ],
 			[ 'пост', 'стоп' ]
 		];
-
 		assert.deepEqual(anagram(input), output);
 	});
-});
+
+	QUnit.test('Возвращает пустой массив при всех словах не анаграммах', function (assert) {
+		const input = [
+			'кот', 'стоп', 'плохо', 'хорошо', 'невнимательный'
+		];
+		const output = [];
+		assert.deepEqual(anagram(input), output)
+	});
+
+	QUnit.test('Возвращает все слова при всех словах анаграммах', function (assert) {
+		const input = [
+			'коран', 'крона', 'нарок', 'норка'
+		];
+		const output = [
+			['коран', 'крона', 'нарок', 'норка']
+		]
+		assert.deepEqual(anagram(input), output);
+	});
+
+	QUnit.test('Возвращает пустой список при пустом входе', function(assert) {
+		const input = [];
+		const output = [];
+		assert.deepEqual(anagram(input), output);
+	})
+})
