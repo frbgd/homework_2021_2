@@ -1,21 +1,20 @@
 'use strict';
 
 
-function anagram(input) {
+const anagram = input => {
     const map = {};
     const output = [];
 
     input.sort();
-    const normalized = input.map(function (word) {
-        return word.split('').sort().join('');
-    });
+    const normalized = input.map(word =>
+        word.split('').sort().join(''));
 
-    normalized.forEach(function(item, idx){
+    normalized.forEach((item, idx) => {
         map[item] = map[item] || [];
         map[item].push( input[idx] );
     });
 
-    Object.keys(map).forEach(function(key){
+    Object.keys(map).forEach(key => {
         if(map[key].length > 1){
             output.push(map[key]);
         }
