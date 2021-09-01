@@ -13,19 +13,19 @@ const anagram = input => {
         return output;
 
     input.sort();
-    const map = {};
+    const normalizedWordsMap = {};
     const normalized = input.map(word =>
         word.split('').sort().join(''));
 
-    normalized.forEach((item, idx) => {
-        if (!map.hasOwnProperty(item))
-            map[item] = [];
-        map[item].push(input[idx]);
+    normalized.forEach((word, idx) => {
+        if (!normalizedWordsMap.hasOwnProperty(word))
+            normalizedWordsMap[word] = [];
+        normalizedWordsMap[word].push(input[idx]);
     });
 
-    Object.keys(map).forEach(key => {
-        if(map[key].length > 1)
-            output.push(map[key]);
+    Object.keys(normalizedWordsMap).forEach(word => {
+        if(normalizedWordsMap[word].length > 1)
+            output.push(normalizedWordsMap[word]);
     });
 
     return output;
