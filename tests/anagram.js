@@ -39,4 +39,18 @@ QUnit.module('Тестируем функцию anagram', function () {
 		const output = [];
 		assert.deepEqual(anagram(input), output);
 	})
+
+	QUnit.test('Возвращает пустой список при неправильном типе данных на входе', function(assert) {
+		const input = 123;
+		const output = [];
+		assert.deepEqual(anagram(input), output);
+	})
+
+	QUnit.test('Возвращает пустой список при неправильном типе данных внутри списка на входе', function(assert) {
+		const input = [
+			'кот', ['ток']
+		]
+		const output = [];
+		assert.deepEqual(anagram(input), output);
+	})
 })
