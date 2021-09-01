@@ -15,14 +15,14 @@ const anagram = input => {
         word.split('').sort().join(''));
 
     normalized.forEach((item, idx) => {
-        map[item] = map[item] || [];
-        map[item].push( input[idx] );
+        if (!map.hasOwnProperty(item))
+            map[item] = [];
+        map[item].push(input[idx]);
     });
 
     Object.keys(map).forEach(key => {
-        if(map[key].length > 1){
+        if(map[key].length > 1)
             output.push(map[key]);
-        }
     });
 
     return output;
