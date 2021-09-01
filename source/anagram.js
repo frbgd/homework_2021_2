@@ -1,6 +1,11 @@
 'use strict';
 
 
+/**
+ * Find anagram in input word list
+ * @param {[string]} input - list of words
+ * @returns {[[string]]} - list of anagrams
+ */
 const anagram = input => {
     const map = {};
     const output = [];
