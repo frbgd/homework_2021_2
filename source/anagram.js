@@ -3,8 +3,8 @@
 
 /**
  * Find anagram in input word list
- * @param {[string]} input - list of words
- * @returns {*[[string]]} - list of anagrams
+ * @param {string[]} input - list of words
+ * @returns {string[][]} - list of anagrams
  */
 const anagram = input => {
     const output = [];
