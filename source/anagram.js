@@ -9,8 +9,9 @@
 const anagram = (input) => {
     const output = [];
 
-    if (!(Array.isArray(input) && input.every((item) => typeof item === 'string')))
+    if (!(Array.isArray(input) && input.every((item) => typeof item === 'string'))) {
         return output;
+    }
 
     input.sort();
     const normalizedWordsMap = {};
@@ -18,14 +19,16 @@ const anagram = (input) => {
         word.split('').sort().join(''));
 
     normalized.forEach((word, idx) => {
-        if (!normalizedWordsMap.hasOwnProperty(word))
+        if (!normalizedWordsMap.hasOwnProperty(word)) {
             normalizedWordsMap[word] = [];
+        }
         normalizedWordsMap[word].push(input[idx]);
     });
 
     Object.keys(normalizedWordsMap).forEach((word) => {
-        if(normalizedWordsMap[word].length > 1)
+        if(normalizedWordsMap[word].length > 1) {
             output.push(normalizedWordsMap[word]);
+        }
     });
 
     return output;
