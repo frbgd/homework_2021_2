@@ -4,15 +4,14 @@
 /**
  * Find anagram in input word list
  * @param {string[]} input - list of words
- * @returns {string[][]} - list of anagrams
+ * @returns {null|string[][]} - list of anagrams
  */
 const anagram = (input) => {
-    const output = [];
-
     if (!(Array.isArray(input) && input.every((item) => typeof item === 'string'))) {
-        return output;
+        return null;
     }
 
+    const output = [];
     input.sort();
     const normalizedWordsMap = {};
     const normalized = input.map((word) =>
