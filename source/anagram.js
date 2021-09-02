@@ -13,20 +13,20 @@ const anagram = (input) => {
     const sortedInput = input.slice().sort();
     const output = [];
 
-    const normalizedWordsMap = {};
     const normalizedWordsList = sortedInput.map((word) =>
         word.split('').sort().join(''));
 
+    const normalizedWordsMap = new Map();
     normalizedWordsList.forEach((word, idx) => {
-        if (!normalizedWordsMap.hasOwnProperty(word)) {
-            normalizedWordsMap[word] = [];
+        if (!normalizedWordsMap.has(word)) {
+            normalizedWordsMap.set(word, []);
         }
-        normalizedWordsMap[word].push(sortedInput[idx]);
+        normalizedWordsMap.get(word).push(sortedInput[idx]);
     });
 
-    Object.keys(normalizedWordsMap).forEach((word) => {
-        if(normalizedWordsMap[word].length > 1) {
-            output.push(normalizedWordsMap[word]);
+    normalizedWordsMap.forEach((value) => {
+        if(value.length > 1) {
+            output.push(value);
         }
     });
 
