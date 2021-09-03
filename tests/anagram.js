@@ -40,17 +40,21 @@ QUnit.module('Тестируем функцию anagram', function () {
 		assert.deepEqual(anagram(input), output);
 	})
 
-	QUnit.test('Возвращает null при неправильном типе данных на входе', function(assert) {
+	QUnit.test('Выбрасывает ошибку при неправильном типе данных на входе', function(assert) {
 		const input = 123;
-		const output = null;
-		assert.deepEqual(anagram(input), output);
+		assert.throws(
+			() => { anagram(input); },
+			new TypeError('invalid input')
+		);
 	})
 
-	QUnit.test('Возвращает null при неправильном типе данных внутри списка на входе', function(assert) {
+	QUnit.test('Выбрасывает ошибку при неправильном типе данных внутри списка на входе', function(assert) {
 		const input = [
 			'кот', ['ток']
 		]
-		const output = null;
-		assert.deepEqual(anagram(input), output);
+		assert.throws(
+			() => { anagram(input); },
+			new TypeError('invalid input')
+		);
 	})
 })
