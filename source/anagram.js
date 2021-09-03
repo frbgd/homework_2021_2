@@ -11,23 +11,19 @@ const anagram = (input) => {
         throw new TypeError('invalid input');
     }
 
-    const normalizedWordsList = input.map((word) =>
-        word.split('').sort().join(''));
-
-    const normalizedWordsMap = new Map();
-    normalizedWordsList.forEach((word, idx) => {
-        if (!normalizedWordsMap.has(word)) {
-            normalizedWordsMap.set(word, []);
+    const normalizedWordsMap = input.slice().sort().reduce((map, word) => {
+        const normalizedWord = word.split('').sort().join('')
+        if (!map.has(normalizedWord)) {
+            map.set(normalizedWord, []);
         }
-        normalizedWordsMap.get(word).push(input[idx]);
-    });
+        map.get(normalizedWord).push(word);
+        return map;
+    }, new Map());
 
-    const output =  [...normalizedWordsMap.values()].reduce((output, anagramGroup) => {
+    return [...normalizedWordsMap.values()].reduce((output, anagramGroup) => {
         if (anagramGroup.length > 1) {
             output.push(anagramGroup.sort());
         }
         return output;
     }, []);
-
-    return output.sort();
 }
