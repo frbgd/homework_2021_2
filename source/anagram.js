@@ -22,5 +22,12 @@ const anagram = (input) => {
         normalizedWordsMap.get(word).push(input[idx]);
     });
 
-    return [...normalizedWordsMap.values()].filter((item) => item.length > 1).map((item) => item.sort()).sort();
+    const output =  [...normalizedWordsMap.values()].reduce((output, anagramGroup) => {
+        if (anagramGroup.length > 1) {
+            output.push(anagramGroup.sort());
+        }
+        return output;
+    }, []);
+
+    return output.sort();
 }
